@@ -16,7 +16,10 @@ memoryName = "classifier.mem"
 type Memory = (Int, [Point])
 
 initMemory :: Point -> IO ()
-initMemory p = writeFile memoryName . show $ (length . snd $ p, [p])
+initMemory p = 
+  do
+    putStrLn $ "Dimensionality Set to: " ++ show (length . snd $ p)
+    writeFile memoryName . show $ (length . snd $ p, [p])
 
 addClassification :: Point -> IO ()
 addClassification point = 
@@ -55,6 +58,7 @@ bmpQuerySession =
 normalAddSession :: IO ()
 normalAddSession = forever $
   do
+    putStrLn "(Classifier, Dimensions)"
     (classi, dims) <- (read <$> getLine) :: IO Point
     addByHand classi dims
 
@@ -62,6 +66,7 @@ bmpAddSession :: IO ()
 bmpAddSession = 
   do
     (dim, _) <- (read <$> Strict.readFile memoryName) :: IO Memory
+    putStrLn "Classifier FilePath"
 
     forever $ 
       do
@@ -71,6 +76,7 @@ bmpAddSession =
 bmpInit :: IO ()  
 bmpInit = 
   do
+    putStrLn "Classifier FilePath Dimensionality"
     [classi, filepath, dim] <- words <$> getLine
     mesh <- bmpMesher (read dim) filepath
     initMemory (classi, mesh)
@@ -78,6 +84,7 @@ bmpInit =
 normalInit :: IO ()
 normalInit =
   do
+    putStrLn "(Classifier, Dimensions)"
     p <- (read <$> getLine) :: IO Point
     initMemory p
 
