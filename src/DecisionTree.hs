@@ -36,30 +36,20 @@ queryTree (Leaf a) p = a
 queryTree (Tree f) p = queryTree (f p) p
 
 
-stdioQueriesNormal :: [Point] -> IO ()
-stdioQueriesNormal state = 
-  do
-    putStrLn "Building Tree.."
-    let tree = buildTreeMCG state
-    putStrLn "Ready for Questions! "
-
+stdioQueriesNormal :: DecisionTree -> IO ()
+stdioQueriesNormal tree = 
     forever $ do
                 query <- getLine 
-                print $ queryTree tree ("", read query)
+                putStr $ queryTree tree ("", read query)
 
 
 
-stdioQueriesFile :: (FilePath -> IO [Double]) -> [Point] -> IO ()
-stdioQueriesFile mesher state =
-  do
-    putStrLn "Building Tree.."
-    let tree = buildTreeMCG state
-    putStrLn "Ready for Questions! "
-
+stdioQueriesFile :: DecisionTree -> (FilePath -> IO [Double]) -> IO ()
+stdioQueriesFile tree mesher = 
     forever $ do
                 file <- getLine
                 mesh <- mesher file
-                print $ queryTree tree ("", mesh)
+                putStr $ queryTree tree ("", mesh)
 
 
 
@@ -92,7 +82,7 @@ benScopePartition dim part (_, dimensions) = dimensions !! dim >= part
 benGetDimPartitioners :: [Point] -> Int -> [Point -> Bool]  
 benGetDimPartitioners groups dimension = map (benScopePartition dimension) $ mx : mn : binaryGroups mx mn bmn
   where
-    (mx, mn) = benDimensionScope
+    (mx, mn) = benDimensionScope groups dimension
 
     binaryGroups :: Double -> Double -> Int -> [Double]
     binaryGroups _ _ 0 = []
@@ -103,26 +93,24 @@ benGetDimPartitioners groups dimension = map (benScopePartition dimension) $ mx
 
 
 
-benGetPartitioners :: [Point] -> [Point -> Bool]
-benGetPartitioners groups =
-  let dimensions = lenght . snd $ groups
-    in concatMap (benGetDimPartitioners groups) [0.. dimensions]
+benGetPartitioners :: Int -> [Point] -> [Point -> Bool]
+benGetPartitioners dmn groups = concatMap (benGetDimPartitioners groups) [0.. dmn]
 
 
-partitionScore :: [Point] -> (Point -> Bool) -> (Double, (Point -> Bool))
+partitionScore :: [Point] -> (Point -> Bool) -> (Double, Point -> Bool)
 partitionScore groups p = 
   let (upper, lower) = partitionWith p groups 
     in ((entropy . classes $ upper) + (entropy . classes $ lower), p)
 
-benMinimizingPartitioner :: [Point] -> Point -> Bool
-benMinimizingPartitioner groups = 
-  let partitioners = benGetPartitioners groups
+benMinimizingPartitioner :: Int -> [Point] -> Point -> Bool
+benMinimizingPartitioner bmn groups = 
+  let partitioners = benGetPartitioners bmn groups
       scores = map (partitionScore groups) partitioners 
     in snd $ minimumBy (compare `on` fst) scores
 
 
-buildTreeBEN :: [Point] -> DecisionTree
-buildTreeBEN groups = buildTreeBinary minimizingPartitioner
+buildTreeBEN :: Int -> [Point] -> DecisionTree
+buildTreeBEN bmn = buildTreeBinary (benMinimizingPartitioner bmn)
 
 
 {- \BEN -}
@@ -139,11 +127,12 @@ mostCommonGroup groups =
     in group 
 
 {- Needs to be given isolated group-}
-mostCommonAttribute :: [Point] -> Int
-mostCommonAttribute groups = minIndex $ map (attributeDelta groups) [0.. length groups] where
+mostCommonAttribute :: Int -> [Point] -> Int
+mostCommonAttribute dmn groups = minIndex $ map (attributeDelta groups) [0.. dmn] where
     attributeDelta :: [Point] -> Int -> Double
     attributeDelta gs i = let attr = map ((!!i) . snd) gs
-                              (mx, mn) = maxMin attr in mx - mn
+                              (mx, mn) = maxMin attr 
+                              in mx - mn
     
 
 {- Partintioning Condition for Binary Tree, needs to be given the isolated group one is checking -} 
@@ -155,15 +144,15 @@ attributeDeltaPartition attribute groups =
 
 
 
-binaryDistributionMCG :: [Point] -> Point -> Bool
-binaryDistributionMCG groups = 
+binaryDistributionMCG :: Int -> [Point] -> Point -> Bool
+binaryDistributionMCG bmn groups = 
   let mcg = mostCommonGroup groups
-      mca = mostCommonAttribute mcg
+      mca = mostCommonAttribute bmn mcg
     in attributeDeltaPartition mca mcg
 
 
-buildTreeMCG :: [Point] -> DecisionTree
-buildTreeMCG = buildTreeBinary binaryDistributionMCG
+buildTreeMCG :: Int -> [Point] -> DecisionTree
+buildTreeMCG bmn = buildTreeBinary (binaryDistributionMCG bmn)
 
 {- /MCG PARTITIONING -}
 
@@ -196,9 +185,17 @@ partitionWith f = foldr disperse ([], [])
                             else (a1, p : a2)
 
 classification :: [Point] -> String
-classification groups = foldr (\a b -> b ++ " or " ++ a) (head classes) (tail classes) 
+classification groups = headerResponse ++ bodyResponse
   where 
     classes = map (fst . head) $ groupOnName groups
+    total = length groups
+
+    occurrences :: [(String, Int)]
+    occurrences = map (fst . head &&& length) $ groupOnName groups
+
+
+    headerResponse = foldr (\a b -> b ++ " or " ++ a) (head classes) (tail classes) ++ "\n"
+    bodyResponse = concatMap (\(name, freq) -> name ++ " " ++ show ((freq * 100) `quot` total) ++ "%\n") occurrences  
 
 
 classes :: [Point] -> [String]

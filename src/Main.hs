@@ -39,21 +39,6 @@ addByHand :: String -> [Double] -> IO ()
 addByHand name mesh = addClassification (name, mesh)
 
 
-normalQuerySession :: IO ()
-normalQuerySession =
-  do
-    (dim, mem) <- (read <$> Strict.readFile memoryName) :: IO Memory
-
-    putStrLn $ "Remember to keep dimensionality at: " ++ show dim ++ "\n"
-    stdioQueriesNormal mem
-
-
-bmpQuerySession :: IO ()
-bmpQuerySession =
-  do
-    (dim, mem) <- (read <$> Strict.readFile memoryName) :: IO Memory
-    let mesher = bmpMesher dim
-    stdioQueriesFile mesher mem
 
 normalAddSession :: IO ()
 normalAddSession = forever $
@@ -89,15 +74,40 @@ normalInit =
     initMemory p
 
 
+normalQuerySession :: (Int -> [Point] -> DecisionTree) -> IO ()
+normalQuerySession d =
+  do
+    (dim, mem) <- (read <$> Strict.readFile memoryName) :: IO Memory
+    putStrLn "Building Tree"
+    let tree = d (dim - 1) mem
+    putStrLn "Ready for Queries"
+    putStrLn $ "Remember to keep dimensionality at: " ++ show dim ++ "\n"
+    stdioQueriesNormal tree
+
+
+bmpQuerySession :: (Int -> [Point] -> DecisionTree) -> IO ()
+bmpQuerySession d =
+  do
+    (dim, mem) <- (read <$> Strict.readFile memoryName) :: IO Memory
+    let mesher = bmpMesher dim
+
+    putStrLn "Building Tree"
+    let tree = d (dim - 1) mem
+    putStrLn "Ready for Queries"
+    stdioQueriesFile tree mesher 
+
+
 main :: IO ()
 main = 
   do
     args <- getArgs
     case args of
-      [] -> putStr "Welcome to Tree!\n\nInit Normal: -i\nAdd Normal: -a\nQuery Normal: -q\nInit Image: -im\nAdd Image: -am\nQuery Image: -qm"
+      [] -> putStr "Welcome to Tree!\n\nInit Normal: -i\nAdd Normal: -a\nQuery Normal: -q\nInit Image: -im\nAdd Image: -am\nQuery Image: -qm\nQuery using MeanValueGrouping: Image: -qgm, Normal -qg"
       ("-i":_) -> normalInit
       ("-a":_) -> normalAddSession
-      ("-q":_) -> normalQuerySession
+      ("-q":_) -> normalQuerySession buildTreeBEN
+      ("-qg":_) -> normalQuerySession buildTreeMCG
       ("-im":_) -> bmpInit
       ("-am":_) -> bmpAddSession
-      ("-qm":_) -> bmpQuerySession
+      ("-qm":_) -> bmpQuerySession buildTreeBEN
+      ("-qgm":_) -> bmpQuerySession buildTreeMCG
