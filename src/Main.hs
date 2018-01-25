@@ -46,6 +46,7 @@ normalAddSession = forever $
     putStrLn "(Classifier, Dimensions)"
     (classi, dims) <- (read <$> getLine) :: IO Point
     addByHand classi dims
+    putStrLn "<3"
 
 bmpAddSession :: IO ()
 bmpAddSession = 
@@ -57,6 +58,7 @@ bmpAddSession =
       do
         [classi, filepath] <- words <$> getLine
         addBMP dim classi filepath
+        putStrLn "<3"
 
 bmpInit :: IO ()  
 bmpInit = 
