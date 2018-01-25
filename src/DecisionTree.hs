@@ -17,7 +17,6 @@ type Point = (String, [Double])
 data DecisionTree = Tree (Point -> DecisionTree) | Leaf String
 
 
-{- Most common group, does not take entropy into account, im not sure how to do that yet. -}
 
 
 buildTreeBinary :: ([Point] -> Point -> Bool) -> [Point] -> DecisionTree
@@ -63,6 +62,15 @@ entropy labels = let tl = fromIntegral $ length labels
                   in negate . sum . map (ent . fromIntegral . length) . group $ sort labels 
 
 
+
+{- LSVM -> Linear Support Vector Machine -}
+
+
+#TODO :D
+
+
+
+{- \LSVM -}
 
 
 {- BEN -> Binary Entropy minimization -}
