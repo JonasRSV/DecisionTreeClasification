@@ -69,7 +69,7 @@ entropy labels = let tl = fromIntegral $ length labels
 
 {- BEN MAGIC NUMBER -}
 bmn :: Int
-bmn = 3
+bmn = 5
 
 benDimensionScope :: [Point] -> Int -> (Double, Double)
 benDimensionScope groups dimension = 
@@ -77,7 +77,7 @@ benDimensionScope groups dimension =
     in maxMin scope
 
 benScopePartition :: Int -> Double -> Point -> Bool
-benScopePartition dim part (_, dimensions) = dimensions !! dim >= part
+benScopePartition dim part (_, dimensions) = dimensions !! dim <= part
 
 benGetDimPartitioners :: [Point] -> Int -> [Point -> Bool]  
 benGetDimPartitioners groups dimension = map (benScopePartition dimension) $ mx : mn : binaryGroups mx mn bmn

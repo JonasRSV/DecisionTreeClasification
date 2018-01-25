@@ -8,7 +8,7 @@ import System.Environment
 
 {- This is the Dependency -}
 bmpMesher :: Int -> FilePath -> IO [Double]
-bmpMesher = meshImage meanValueGrouping
+bmpMesher = meshImage BMPPROC.maybeThisIsOk
 
 memoryName :: FilePath
 memoryName = "classifier.mem"
