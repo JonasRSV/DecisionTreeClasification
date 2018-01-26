@@ -6,9 +6,13 @@ import qualified System.IO.Strict as Strict
 import Control.Monad
 import System.Environment
 
+import Partitioning.MCG
+import Partitioning.BEN
+import Utils
+
 {- This is the Dependency -}
 bmpMesher :: Int -> FilePath -> IO [Double]
-bmpMesher = meshImage BMPPROC.maybeThisIsOk
+bmpMesher = meshImage BMPPROC.takeThisOne
 
 memoryName :: FilePath
 memoryName = "classifier.mem"
@@ -107,9 +111,9 @@ main =
       [] -> putStr "Welcome to Tree!\n\nInit Normal: -i\nAdd Normal: -a\nQuery Normal: -q\nInit Image: -im\nAdd Image: -am\nQuery Image: -qm\nQuery using MeanValueGrouping: Image: -qgm, Normal -qg"
       ("-i":_) -> normalInit
       ("-a":_) -> normalAddSession
-      ("-q":_) -> normalQuerySession buildTreeBEN
-      ("-qg":_) -> normalQuerySession buildTreeMCG
+      ("-q":_) -> normalQuerySession $ buildTreeBinary . Partitioning.BEN.partition
+      ("-qg":_) -> normalQuerySession $ buildTreeBinary . Partitioning.MCG.partition
       ("-im":_) -> bmpInit
       ("-am":_) -> bmpAddSession
-      ("-qm":_) -> bmpQuerySession buildTreeBEN
-      ("-qgm":_) -> bmpQuerySession buildTreeMCG
+      ("-qm":_) -> bmpQuerySession $ buildTreeBinary . Partitioning.BEN.partition
+      ("-qgm":_) -> bmpQuerySession $ buildTreeBinary . Partitioning.MCG.partition
