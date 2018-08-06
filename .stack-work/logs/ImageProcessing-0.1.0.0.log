@@ -1,0 +1,5 @@
+Preprocessing library for ImageProcessing-0.1.0.0..
+Building library for ImageProcessing-0.1.0.0..
+[2 of 2] Compiling BMPPROC          ( src/BMPPROC.hs, .stack-work/dist/x86_64-osx/Cabal-2.0.1.0/build/BMPPROC.o )
+Installing library in /Users/jonval/WARNING/singularity/Dtrees/.stack-work/install/x86_64-osx/lts-10.3/8.2.2/lib/x86_64-osx-ghc-8.2.2/ImageProcessing-0.1.0.0-KGMuVncmrcN1w0rxjEC2zb
+Registering library for ImageProcessing-0.1.0.0..

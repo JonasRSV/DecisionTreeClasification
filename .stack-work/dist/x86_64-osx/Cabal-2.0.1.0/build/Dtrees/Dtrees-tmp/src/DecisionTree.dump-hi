@@ -1,0 +1,297 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-26 14:18:14.07477 UTC
+
+interface main:DecisionTree 8022
+  interface hash: 7a559546b31943c8698a1aaab0bea7a1
+  ABI hash: 02e508ee8d4388f8d807067c837d5bf9
+  export-list hash: 5f0d931892e4f2be4b4ad09cc64c352e
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: c6ffa1b42ed6073a559595e4774f8ca7
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  DecisionTree.buildTreeBinary
+  DecisionTree.queryTree
+  DecisionTree.stdioQueriesFile
+  DecisionTree.stdioQueriesNormal
+  DecisionTree.wanderTree
+  DecisionTree.DecisionTree{DecisionTree.Leaf DecisionTree.Tree}
+module dependencies: Partitioning.BEN Partitioning.MCG Utils
+package dependencies: base-4.10.1.0* ghc-prim-0.5.1.1
+                      integer-gmp-1.0.1.0
+orphans: main:Utils base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: base-4.10.1.0:Control.Applicative
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Type.Equality base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats
+import  -/  base-4.10.1.0:Control.Applicative 99577a9c463ffe4790a1d37547a345bd
+import  -/  base-4.10.1.0:Control.Arrow b4ff99f516cf3ba87a1e4985dc7f496f
+import  -/  base-4.10.1.0:Control.Monad ebed2e8e7444944e0c1d827c6faf40a4
+import  -/  base-4.10.1.0:Data.Function e8e43d925cd2e5608dfc5d809f4ae5e4
+import  -/  base-4.10.1.0:Data.List 4ab7fa2a1b87502b23af891a384f0506
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.Err 514b3a24b22e9d7d731c2d0d02d10842
+import  -/  base-4.10.1.0:GHC.IO e261d8b68ccf81a359626fa520b57d1d
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  base-4.10.1.0:System.IO 525805ab19df5e4fe6d8de7dde9cb909
+import  -/  base-4.10.1.0:Text.Read 9e862e012b3c71e83cb56fb456188f44
+import  -/  ghc-prim-0.5.1.1:GHC.Types b1fd0716441595db508c1a74387bf394
+import  -/  Partitioning.BEN 93db09673c953a8c8a5bded6829ec449
+  exports: 4a19e3467ca1f7db1583471140e03606
+import  -/  Partitioning.MCG 7fc197aca4185a9268323ca6a077d09a
+  exports: e558aade1f01023a217ed0ffe38c139a
+import  -/  Utils 31d08975abf69ac78b4b9516bf505155
+  exports: 19c0c291e20577b898faa246f97fb015
+  Point 41b4e61253d3ff9bb75bf7f9a2a5e139
+  classification 9adcbb2d4b431af434f7ff581bd101ab
+  partitionWith 4f4b982d151fb89f86171ad6d4d0825f
+b526f6cf89e18169ec5229543050db65
+  $tc'Leaf :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   16504885287676253361##
+                   9889130615033959566##
+                   DecisionTree.$trModule
+                   DecisionTree.$tc'Leaf2
+                   0#
+                   DecisionTree.$tc'Leaf1) -}
+94cc2784b2ef0b6caa740ef6e4969c12
+  $tc'Leaf1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+0d6519b703d333010adf195f15bf307c
+  $tc'Leaf2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS DecisionTree.$tc'Leaf3) -}
+b7c726dab54789e20ca4be818d314f80
+  $tc'Leaf3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Leaf"#) -}
+502e134399f071adca9a8416f10b6d4e
+  $tc'Tree :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   2096870230726658882##
+                   7070206788391674156##
+                   DecisionTree.$trModule
+                   DecisionTree.$tc'Tree2
+                   0#
+                   DecisionTree.$tc'Tree1) -}
+d807373996002cafb467079d2c1ffbb2
+  $tc'Tree1 :: GHC.Types.KindRep
+  {- HasNoCafRefs, Strictness: m4, Inline: [~] -}
+f15feb9e2245449e22185dcb744a532e
+  $tc'Tree2 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS DecisionTree.$tc'Tree3) -}
+1b6ab10adbb9de365a55d61f036ff591
+  $tc'Tree3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("'Tree"#) -}
+0e4802e32538ba22892ae2e35c9f80df
+  $tcDecisionTree :: GHC.Types.TyCon
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.TyCon
+                   11671705394939590160##
+                   2054477344884188634##
+                   DecisionTree.$trModule
+                   DecisionTree.$trModule1
+                   0#
+                   GHC.Types.krep$*) -}
+28d54f742bad102a0d80d1e8ffacc41e
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   DecisionTree.$trModule3
+                   DecisionTree.$trModule1) -}
+9b9c6fb1b106f02b1988bb6d006f1518
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS DecisionTree.$trModule2) -}
+a6e0d2e58b06dcec95f264b1d9a42383
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("DecisionTree"#) -}
+20088018375f83c3eeec9469411611ef
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS DecisionTree.$trModule4) -}
+6655264191b11f43770ffccdffc19fea
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+ab1ae77466c42327464f16a6198996a2
+  data DecisionTree
+    = Tree (Utils.Point -> DecisionTree.DecisionTree)
+    | Leaf GHC.Base.String
+39bd73b3b139341fa246b5fc4b63ba23
+  buildTreeBinary ::
+    ([Utils.Point] -> Utils.Point -> GHC.Types.Bool)
+    -> [Utils.Point] -> DecisionTree.DecisionTree
+  {- Arity: 2, Strictness: <L,C(C(U))><S,U> -}
+8a135727c01b19669c4d13b766ca3687
+  queryTree ::
+    DecisionTree.DecisionTree -> Utils.Point -> GHC.Base.String
+  {- Arity: 2, Strictness: <S,1*U><L,U>,
+     Unfolding: InlineRule (2, True, False)
+                (\ (ds :: DecisionTree.DecisionTree) (p :: Utils.Point) ->
+                 case ds of wild {
+                   DecisionTree.Tree f
+                   -> case f p of wild1 {
+                        DecisionTree.Tree ds1 -> DecisionTree.queryTree1
+                        DecisionTree.Leaf c -> c }
+                   DecisionTree.Leaf a -> a }) -}
+577f83044164a9fbe9e6f02176e356cd
+  queryTree1 :: GHC.Base.String
+  {- Strictness: x -}
+0520fb8f1a9e23575db72b1fd875448e
+  stdioQueriesFile ::
+    DecisionTree.DecisionTree
+    -> (GHC.IO.FilePath -> GHC.Types.IO [GHC.Types.Double])
+    -> GHC.Types.IO ()
+  {- Arity: 3, Strictness: <L,U><L,C(C1(U(U,U)))><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                DecisionTree.stdioQueriesFile1
+                  `cast`
+                (<DecisionTree.DecisionTree>_R
+                 ->_R <GHC.IO.FilePath -> GHC.Types.IO [GHC.Types.Double]>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+11013de51bd21c4641eb69f772ea5ab7
+  stdioQueriesFile1 ::
+    DecisionTree.DecisionTree
+    -> (GHC.IO.FilePath -> GHC.Types.IO [GHC.Types.Double])
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 3, Strictness: <L,U><L,C(C1(U(U,U)))><S,U>,
+     Unfolding: (\ (tree :: DecisionTree.DecisionTree)
+                   (mesher :: GHC.IO.FilePath -> GHC.Types.IO [GHC.Types.Double])
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 letrec {
+                   a' :: GHC.Prim.State# GHC.Prim.RealWorld
+                         -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                     <join 1> {- Arity: 1, Strictness: <S,U> -}
+                   = \ (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                     case GHC.IO.Handle.Internals.wantReadableHandle_1
+                            @ GHC.Base.String
+                            GHC.IO.Handle.Text.hGetLine4
+                            GHC.IO.Handle.FD.stdin
+                            GHC.IO.Handle.Text.hGetLine2
+                              `cast`
+                            (<GHC.IO.Handle.Types.Handle__>_R
+                             ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
+                            s of ds1 { (#,#) ipv ipv1 ->
+                     case (mesher ipv1)
+                            `cast`
+                          (GHC.Types.N:IO[0] <[GHC.Types.Double]>_R)
+                            ipv of ds2 { (#,#) ipv2 ipv3 ->
+                     case GHC.IO.Handle.Text.hPutStr2
+                            GHC.IO.Handle.FD.stdout
+                            (GHC.CString.unpackAppendCString#
+                               DecisionTree.stdioQueriesFile3
+                               (GHC.Base.++
+                                  @ GHC.Types.Char
+                                  ipv1
+                                  (GHC.CString.unpackAppendCString#
+                                     DecisionTree.stdioQueriesFile2
+                                     (case tree of wild {
+                                        DecisionTree.Tree f
+                                        -> case f (GHC.Types.[] @ GHC.Types.Char, ipv3) of wild1 {
+                                             DecisionTree.Tree ds -> DecisionTree.queryTree1
+                                             DecisionTree.Leaf c -> c }
+                                        DecisionTree.Leaf a -> a }))))
+                            GHC.Types.False
+                            ipv2 of ds3 { (#,#) ipv4 ipv5 ->
+                     a' ipv4 } } }
+                 } in
+                 a' eta) -}
+19dcb4eb3b3cda4f0c894cf4c095085a
+  stdioQueriesFile2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: (" ** "#) -}
+fb554939023630b1cdfc818212849a7f
+  stdioQueriesFile3 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("** "#) -}
+08e80347f1609e23687ac8f89fd07ed9
+  stdioQueriesNormal :: DecisionTree.DecisionTree -> GHC.Types.IO ()
+  {- Arity: 2, Strictness: <L,U><S,U>,
+     Unfolding: InlineRule (0, True, True)
+                DecisionTree.stdioQueriesNormal1
+                  `cast`
+                (<DecisionTree.DecisionTree>_R
+                 ->_R Sym (GHC.Types.N:IO[0] <()>_R)) -}
+4ad608a97bf396fc2b3af44b5ab36a38
+  stdioQueriesNormal1 ::
+    DecisionTree.DecisionTree
+    -> GHC.Prim.State# GHC.Prim.RealWorld
+    -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+  {- Arity: 2, Strictness: <L,U><S,U>,
+     Unfolding: (\ (tree :: DecisionTree.DecisionTree)
+                   (eta :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                 letrec {
+                   a' :: GHC.Prim.State# GHC.Prim.RealWorld
+                         -> (# GHC.Prim.State# GHC.Prim.RealWorld, () #)
+                     <join 1> {- Arity: 1, Strictness: <S,U> -}
+                   = \ (s :: GHC.Prim.State# GHC.Prim.RealWorld) ->
+                     case GHC.IO.Handle.Internals.wantReadableHandle_1
+                            @ GHC.Base.String
+                            GHC.IO.Handle.Text.hGetLine4
+                            GHC.IO.Handle.FD.stdin
+                            GHC.IO.Handle.Text.hGetLine2
+                              `cast`
+                            (<GHC.IO.Handle.Types.Handle__>_R
+                             ->_R Sym (GHC.Types.N:IO[0] <GHC.Base.String>_R))
+                            s of ds1 { (#,#) ipv ipv1 ->
+                     case GHC.IO.Handle.Text.hPutStr2
+                            GHC.IO.Handle.FD.stdout
+                            (case tree of wild {
+                               DecisionTree.Tree f
+                               -> case f (GHC.Types.[] @ GHC.Types.Char,
+                                          case Text.Read.readEither8
+                                                 @ [GHC.Types.Double]
+                                                 (Text.ParserCombinators.ReadP.run
+                                                    @ [GHC.Types.Double]
+                                                    DecisionTree.stdioQueriesNormal4
+                                                    ipv1) of wild1 {
+                                            [] -> DecisionTree.stdioQueriesNormal3
+                                            : x ds
+                                            -> case ds of wild2 {
+                                                 [] -> x
+                                                 : ipv2 ipv3
+                                                 -> DecisionTree.stdioQueriesNormal2 } }) of wild1 {
+                                    DecisionTree.Tree ds -> DecisionTree.queryTree1
+                                    DecisionTree.Leaf c -> c }
+                               DecisionTree.Leaf a -> a })
+                            GHC.Types.False
+                            ipv of ds2 { (#,#) ipv2 ipv3 ->
+                     a' ipv2 } }
+                 } in
+                 a' eta) -}
+7484ddb74b75615fd789dcaa25f1519c
+  stdioQueriesNormal2 :: [GHC.Types.Double]
+  {- Strictness: x -}
+649d0d8d3108abc563c87f1ecd1da709
+  stdioQueriesNormal3 :: [GHC.Types.Double]
+  {- Strictness: x -}
+c89558548cf801a56e0d26466b201dc7
+  stdioQueriesNormal4 ::
+    Text.ParserCombinators.ReadP.P [GHC.Types.Double]
+  {- Unfolding: ((GHC.Read.$fReadDouble_$creadListPrec
+                    `cast`
+                  (Text.ParserCombinators.ReadPrec.N:ReadPrec[0]
+                       <[GHC.Types.Double]>_R)
+                    Text.ParserCombinators.ReadPrec.minPrec)
+                   `cast`
+                 (Text.ParserCombinators.ReadP.N:ReadP[0] <[GHC.Types.Double]>_R)
+                   @ [GHC.Types.Double]
+                   (Text.Read.readEither7 @ [GHC.Types.Double])) -}
+3dd0aea4893d6f045298f32646768d06
+  wanderTree ::
+    DecisionTree.DecisionTree
+    -> Utils.Point -> DecisionTree.DecisionTree
+  {- Arity: 2, HasNoCafRefs, Strictness: <S,1*U><L,U> -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+

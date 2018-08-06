@@ -1,0 +1,90 @@
+
+==================== FINAL INTERFACE ====================
+2018-01-26 14:14:26.467984 UTC
+
+interface main:Partitioning.BEN 8022
+  interface hash: e30382a91300737238cb882d3e42a20b
+  ABI hash: 93db09673c953a8c8a5bded6829ec449
+  export-list hash: 4a19e3467ca1f7db1583471140e03606
+  orphan hash: 693e9af84d3dfcc71e640e005bdc5e2e
+  flag hash: 059baba81bb262148e70ecca5122df74
+  sig of: Nothing
+  used TH splices: False
+  where
+exports:
+  Partitioning.BEN.partition
+module dependencies: Utils
+package dependencies: base-4.10.1.0* ghc-prim-0.5.1.1
+                      integer-gmp-1.0.1.0
+orphans: main:Utils base-4.10.1.0:GHC.Float base-4.10.1.0:GHC.Base
+family instance modules: base-4.10.1.0:Control.Applicative
+                         base-4.10.1.0:Data.Either base-4.10.1.0:Data.Functor.Const
+                         base-4.10.1.0:Data.Functor.Identity base-4.10.1.0:Data.Monoid
+                         base-4.10.1.0:Data.Type.Equality base-4.10.1.0:GHC.Generics
+                         base-4.10.1.0:GHC.IO.Exception base-4.10.1.0:GHC.TypeLits
+                         base-4.10.1.0:GHC.TypeNats
+import  -/  base-4.10.1.0:Control.Applicative 99577a9c463ffe4790a1d37547a345bd
+import  -/  base-4.10.1.0:Control.Arrow b4ff99f516cf3ba87a1e4985dc7f496f
+import  -/  base-4.10.1.0:Control.Monad ebed2e8e7444944e0c1d827c6faf40a4
+import  -/  base-4.10.1.0:Data.Foldable 9ed87455d68e87ff2b5b8725eae9897e
+import  -/  base-4.10.1.0:Data.Function e8e43d925cd2e5608dfc5d809f4ae5e4
+import  -/  base-4.10.1.0:Data.List 4ab7fa2a1b87502b23af891a384f0506
+import  -/  base-4.10.1.0:Data.Tuple 8fa1305aa5032ea35e2a54fa5f1e78f9
+import  -/  base-4.10.1.0:GHC.Base 782fd99b5e36f3698a26179a49afca64
+import  -/  base-4.10.1.0:GHC.List e3060fbeb44ce0038e6b4dedf2dd9cf1
+import  -/  base-4.10.1.0:GHC.Num 6e1dc5d36d99a802edb39b92bb1923b8
+import  -/  base-4.10.1.0:GHC.Real 3c62834bc25e762eabc44149c4cc142d
+import  -/  base-4.10.1.0:Prelude 31945b7d0084063347fc52506d3a4020
+import  -/  ghc-prim-0.5.1.1:GHC.Classes 93e2660065dce9329577e83d76d8f0d4
+import  -/  Utils a15952b9f87787ecc3274d6a323412ea
+  exports: 19c0c291e20577b898faa246f97fb015
+  Point 41b4e61253d3ff9bb75bf7f9a2a5e139
+  informationGain 7e198f81a8db499f302ccd0ba1d809aa
+  maxMin baca7f816c04d1d1f73d658703445dae
+  partitionWith 4f4b982d151fb89f86171ad6d4d0825f
+d16a065c637672a100cc33944b6422c1
+  $smaximum1 :: GHC.Types.Double
+  {- Strictness: x -}
+4e5c6f0bf4272a06c2e46032817789dc
+  $sminimum1 :: GHC.Types.Double
+  {- Strictness: x -}
+046790b9f9db6415f4775aaf82961b32
+  $trModule :: GHC.Types.Module
+  {- HasNoCafRefs, Strictness: m,
+     Unfolding: (GHC.Types.Module
+                   Partitioning.BEN.$trModule3
+                   Partitioning.BEN.$trModule1) -}
+8735e64fe148002e4053112c0e85aea1
+  $trModule1 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Partitioning.BEN.$trModule2) -}
+559538ef139ad920a186019b7972b56b
+  $trModule2 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("Partitioning.BEN"#) -}
+3a23a2079918ca48e5a45587d66ee9bf
+  $trModule3 :: GHC.Types.TrName
+  {- HasNoCafRefs, Strictness: m1,
+     Unfolding: (GHC.Types.TrNameS Partitioning.BEN.$trModule4) -}
+ba2a49e9adf8d5fc1a11eed424a145ad
+  $trModule4 :: GHC.Prim.Addr#
+  {- HasNoCafRefs, Unfolding: ("main"#) -}
+fbc383d77f1e377e0d616590a34ede9e
+  $wpartition ::
+    GHC.Prim.Int# -> [Utils.Point] -> Utils.Point -> GHC.Types.Bool
+  {- Arity: 2, Strictness: <S,U><L,U>, Inline: [0] -}
+831b44a71a67f1921f156f394c248355
+  partition ::
+    GHC.Types.Int -> [Utils.Point] -> Utils.Point -> GHC.Types.Bool
+  {- Arity: 2, Strictness: <S(S),1*U(U)><L,U>, Inline: [0],
+     Unfolding: InlineRule (2, True, False)
+                (\ (w :: GHC.Types.Int) (w1 :: [Utils.Point]) ->
+                 case w of ww { GHC.Types.I# ww1 ->
+                 Partitioning.BEN.$wpartition ww1 w1 }) -}
+vectorised variables:
+vectorised tycons:
+vectorised reused tycons:
+parallel variables:
+parallel tycons:
+trusted: safe
+require own pkg trusted: False
+
